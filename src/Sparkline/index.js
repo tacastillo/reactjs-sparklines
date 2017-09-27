@@ -19,9 +19,9 @@ export default class Sparkline extends Component {
 	    	xLine: d3.scaleLinear(),
 	    	xBar: d3.scaleBand(),
 	    	y: d3.scaleLinear(),
-	    	height: 100,
-	    	width: 100
-	    }
+	    	height: 1,
+	    	width: 1
+	    };
 	}
 
 	componentWillMount() {
@@ -30,18 +30,8 @@ export default class Sparkline extends Component {
 
 	componentDidMount() {
 		this.svg = d3.select(this.refs.svg);
-	    
 
-	    this.setHeight();
 	    this.buildScales();
-	}
-
-	setHeight() {
-		this.setState(function(state) {
-			return {
-				height: parseFloat(getComputedStyle(this.refs.svg).fontSize)
-			}
-		});
 	}
 
 	readProps() {
@@ -76,11 +66,14 @@ export default class Sparkline extends Component {
 	buildScales() {
 		this.setState(function(state) {
 			console.log(state, this);
-			let plotWidth = +state.width + state.margin,
-				plotHeight = +state.height + state.margin;
+			let height = parseFloat(getComputedStyle(this.refs.svg).fontSize);
+			let width = height * 3;
 
-			let xRange = [state.margin, state.width - state.margin],
-				yRange = [state.height - state.margin, state.margin];
+			let plotWidth = width + state.margin,
+				plotHeight = height + state.margin;
+
+			let xRange = [state.margin, width - state.margin],
+				yRange = [height - state.margin, state.margin];
 
 			let xLine = d3.scaleLinear()
 					.domain(d3.extent(this.props.data, (d, i) => i))
@@ -93,7 +86,10 @@ export default class Sparkline extends Component {
 			let y = d3.scaleLinear()
 					.domain([0, d3.max(this.props.data)])
 					.range(yRange);
+
 			return {
+				height: height,
+				width: width,
 				xLine: xLine,
 				xBar: xBar,
 				y: y
@@ -113,7 +109,7 @@ export default class Sparkline extends Component {
 		});
 		return (
 			<span className="sparkline-svg-container">
-				<svg 
+				<svg
 					className="sparkline-svg"
 					height={this.state.height}
 					width={this.state.width}

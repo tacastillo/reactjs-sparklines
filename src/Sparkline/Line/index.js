@@ -8,7 +8,6 @@ export default class Line extends Component {
 	constructor(props){
 		super(props);
 		this.pathFunc = null;
-
 	}
 
 	componentDidMount() {
