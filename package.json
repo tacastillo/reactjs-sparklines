@@ -1,7 +1,7 @@
 {
   "name": "reactjs-sparkline",
   "version": "1.0.0",
-  "description": "reactjs-sparkline React component",
+  "description": "Simple, customizable inline sparklines built in d3.js for your React projects",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -18,12 +18,15 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "d3": "^4.10.2"
+  },
   "peerDependencies": {
     "react": "15.x"
   },
   "devDependencies": {
     "nwb": "0.18.x",
+    "nwb-sass": "^0.8.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
@@ -32,6 +35,11 @@
   "license": "MIT",
   "repository": "",
   "keywords": [
-    "react-component"
+    "react-component",
+    "d3",
+    "react",
+    "d3js",
+    "reactjs",
+    "sparkline"
   ]
 }

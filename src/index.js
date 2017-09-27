@@ -1,9 +1,5 @@
-import React, {Component} from 'react'
+import Sparkline from './Sparkline';
 
-export default class extends Component {
-  render() {
-    return <div>
-      <h2>Welcome to React components</h2>
-    </div>
-  }
+export {
+	Sparkline
 }
