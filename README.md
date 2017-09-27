@@ -13,7 +13,6 @@
 [coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
 [coveralls]: https://coveralls.io/github/user/repo
 
-# reactjs-sparklines
 ## What are Sparklines?
 Sparklines are typically small, inline data visualizations to quickly supplement text data as a way to quickly show trends and information without taking too much of the reader's attention from the text and content.
 
@@ -39,33 +38,6 @@ function render() {
 		</p>
 	)
 }
-
-```
-### Custom Theming
-```javascript
-import { Sparkline } from 'reactjs-sparklines';
-
-...
-
-function render() {
-	return (
-		<p>reactjs-sparklines restricts very little
-			<Sparkline
-				theme={sparkLineTheme}
-				className="complex-sparkline"
-				data=[4, 8, 15, 16, 23, 42]
-			/>
-			in CSS, so feel free to pass any classes in or your own themes!
-		</p>
-	)
-}
-
-const sparkLineTheme = {
-	type: 'line',
-	points: true,
-	color: '#00CDCD',
-	width: '2px'
-};
 
 ```
 
