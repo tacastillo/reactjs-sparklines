@@ -5,11 +5,6 @@ import '../../styles.scss';
 
 export default class Line extends Component {
 
-	constructor(props){
-		super(props);
-		this.pathFunc = null;
-	}
-
 	componentDidMount() {
 		this.line = d3.select(this.refs.line);
 	}
@@ -20,7 +15,7 @@ export default class Line extends Component {
 
 	buildLine() {
 		this.lineFunc = d3.line()
-			.x((d, i) => this.props.x(i))
+			.x((d, i) => this.props.xLine(i))
 			.y((d) => this.props.y(d));
 
 		this.line

@@ -1,5 +1,14 @@
-.line {
-	fill: none;
-	stroke: black;
-	stroke-width: 1px;
+.sparkline-svg {
+	vertical-align: bottom;
+
+	.line {
+		fill: none;
+		stroke: black;
+		stroke-width: 1px;
+	}
+
+	.band {
+		fill: gray;
+		fill-opacity: 0.4;
+	}
 }
