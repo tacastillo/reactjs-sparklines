@@ -1,8 +1,17 @@
-.wrapper {
-	width: 100vw;
-	height: 100vh;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(2, 1fr);
+body {
+    font-size: 24px;
+    line-height: 150%;
+
+    .wrapper {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    p {
+        font-size: 20px;
+    }
 }

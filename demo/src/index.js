@@ -16,30 +16,38 @@ class Demo extends Component {
 		];
 	}
 
+	generateData(length, modifier) {
+		let data = [];
+		for (let i = 0; i < length; i++) {
+			data.push(modifier ? modifier(Math.random(), i) : Math.random() * -1);
+		};
+		return data;
+	}
+
 	render() {
 		return (
 			<div className="wrapper">
 				<div className="cell">
 					<p> {this.text[0]}
-					<Sparkline data={[1,2,2,2,3,4,4,3,3,5,5,6,6,4,3,4,5,6,6,1,5,2,6,4,4,5,4,5,5,5,6,6,4,3,4,4,3,4,4,5,5,3,8,7,9,6,7,6,6,7,4,4,6]}
-						line="line-test"
+					<Sparkline data={this.generateData(10, (d,i) => (d + i/10))}
 						band="band-test"
+						bars="bar-test"
 					/>
 					{this.text[1]}
 					</p>
 				</div>
 				<div className="cell">
 					<h1> {this.text[0]}
-					<Sparkline data={[7,3,6,4]}
-						line="line-test"
+					<Sparkline data={this.generateData(25, (d, i) => (i + d*15))}
 						band="band-test"
+						points="points-test"
 					/>
 					{this.text[1]}
 					</h1>
 				</div>
 				<div className="cell">
 					{this.text[0]}
-					<Sparkline data={[3,4,4,6]}
+					<Sparkline data={this.generateData(15, (d,i) => (d - i/10))}
 						line="line-test"
 						band="band-test"
 					/>
@@ -47,7 +55,7 @@ class Demo extends Component {
 				</div>
 				<div className="cell">
 					<span>{this.text[0]}</span>
-					<Sparkline data={[3,4,4,6]}
+					<Sparkline data={this.generateData(20)}
 						line="line-test"
 						band="band-test"
 					/>

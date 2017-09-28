@@ -3,12 +3,10 @@ import * as d3 from 'd3';
 
 import Line from './Line';
 import NormalBand from './NormalBand';
+import Points from './Points';
+import Bars from './Bars';
 
 import '../styles.scss';
-const ELEMENT_TYPES = {
-	LINE: Line,
-	BAND: NormalBand
-};
 
 export default class Sparkline extends Component {
 
@@ -44,16 +42,17 @@ export default class Sparkline extends Component {
 				yRange = [height - state.margin, state.margin];
 
 			let xLine = d3.scaleLinear()
-					.domain(d3.extent(this.props.data, (d, i) => i))
-					.rangeRound(xRange);
+				.domain(d3.extent(this.props.data, (d, i) => i))
+				.rangeRound(xRange);
 
 			let xBar = d3.scaleBand()
 				.domain(this.props.data.map((d,i) => i))
-				.range(xRange);
+				.range(xRange)
+				.paddingInner(0.1);
 
 			let y = d3.scaleLinear()
-					.domain([0, d3.max(this.props.data)])
-					.range(yRange);
+				.domain(d3.extent(this.props.data))
+				.range(yRange);
 
 			return {
 				height: height,
@@ -71,10 +70,10 @@ export default class Sparkline extends Component {
 			switch (keyFormatted) {
 				case 'LINE':
 				case 'AREA':
-				case 'BAR':
+				case 'BARS':
 				case 'BAND':
 				case 'POINTS':
-					let elementProps = parseProps(keyFormatted, this.props[key])
+					let elementProps = parseProps(keyFormatted, this.props[key]);
 					this.elements.push(elementProps);
 					break;
 			};
@@ -92,6 +91,8 @@ export default class Sparkline extends Component {
 			}
 			return elementProps;
 		}
+
+		console.log(this.elements);
 	}
 
 	render() {
@@ -103,6 +104,13 @@ export default class Sparkline extends Component {
 					break;
 				case 'BAND':
 					element = <NormalBand data={this.props.data} {...elementConfig.props} {...this.state} key="band"></NormalBand>
+					break;
+				case 'POINTS':
+					element = <Points data={this.props.data} {...elementConfig.props} {...this.state} key="points"></Points>
+					break;
+				case 'BARS':
+					element = <Bars data={this.props.data} {...elementConfig.props} {...this.state} key="points"></Bars>
+					break;
 			};
 			return element;
 		});

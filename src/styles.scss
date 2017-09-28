@@ -1,5 +1,5 @@
 .sparkline-svg {
-	vertical-align: bottom;
+	vertical-align: baseline;
 
 	.line {
 		fill: none;
@@ -10,5 +10,11 @@
 	.band {
 		fill: gray;
 		fill-opacity: 0.4;
+	}
+
+	.point {
+		// fill: none;
+		stroke: black;
+		stroke-width: 0.5px;
 	}
 }
